@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://unipage.io/sitemap.xml
+
+# Block unnecessary crawling
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+
+# Allow specific pages
+Allow: /
+Allow: /courses
+Allow: /about
+Allow: /privacy
+Allow: /terms

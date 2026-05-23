@@ -1,0 +1,182 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 0%; /* Pure black text */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 0 0% 0%; /* Black text on cards */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 270 80% 57%; /* Violet primary */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 98%; /* Very light gray */
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 0 0% 100%;
+    --ring: 270 80% 57%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+#root {
+  /* No constraints - let individual pages handle their own layout */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #fb5607aa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #3a86ffaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.unipage-logo {
+  transition: transform 0.3s ease;
+}
+
+.unipage-logo:hover {
+  transform: scale(1.05);
+}
+
+.unipage-title {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #8338ec, #3a86ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Colorful gradient backgrounds */
+.gradient-bg-primary {
+  background: linear-gradient(135deg, #8338ec 0%, #3a86ff 100%);
+}
+
+.gradient-bg-secondary {
+  background: linear-gradient(135deg, #ffbe0b 0%, #fb5607 100%);
+}
+
+.gradient-bg-accent {
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+}
+
+/* Button styles with the new theme */
+.colorful-button {
+  background: linear-gradient(90deg, #fb5607, #ff006e);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(251, 86, 7, 0.4);
+}
+
+.colorful-button:hover {
+  background: linear-gradient(90deg, #ff006e, #fb5607);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 86, 7, 0.5);
+}
+
+.outline-button {
+  background: transparent;
+  color: #8338ec;
+  border: 2px solid #8338ec;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.outline-button:hover {
+  background: rgba(131, 56, 236, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Color changing animation */
+.color-change-2x {
+  -webkit-animation: color-change-2x 50s linear infinite alternate both;
+  animation: color-change-2x 50s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-2x {
+  0%, 18% {
+    background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+  }
+  20%, 38% {
+    background: linear-gradient(135deg, #fb5607 0%, #ff006e 50%, #8338ec 100%);
+  }
+  40%, 58% {
+    background: linear-gradient(135deg, #ffbe0b 0%, #fb5607 50%, #ff006e 100%);
+  }
+  60%, 78% {
+    background: linear-gradient(135deg, #3a86ff 0%, #8338ec 50%, #fb5607 100%);
+  }
+  80%, 100% {
+    background: linear-gradient(135deg, #8338ec 0%, #ff006e 50%, #ffbe0b 100%);
+  }
+}
+
+@keyframes color-change-2x {
+  0%, 18% {
+    background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+  }
+  20%, 38% {
+    background: linear-gradient(135deg, #fb5607 0%, #ff006e 50%, #8338ec 100%);
+  }
+  40%, 58% {
+    background: linear-gradient(135deg, #ffbe0b 0%, #fb5607 50%, #ff006e 100%);
+  }
+  60%, 78% {
+    background: linear-gradient(135deg, #3a86ff 0%, #8338ec 50%, #fb5607 100%);
+  }
+  80%, 100% {
+    background: linear-gradient(135deg, #8338ec 0%, #ff006e 50%, #ffbe0b 100%);
+  }
+}
