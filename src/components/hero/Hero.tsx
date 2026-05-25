@@ -1,7 +1,6 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/components/auth/AuthProvider";
-import ActionButton from "../common/ActionButton";
 import graduationStudents from "@/assets/graduation-hero-optimized.webp";
 import graduateFemale from "@/assets/graduate-female-optimized.webp";
 import graduateMale from "@/assets/graduate-male-optimized.webp";

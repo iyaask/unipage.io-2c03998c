@@ -109,6 +109,150 @@ export type Database = {
         }
         Relationships: []
       }
+      student_profiles: {
+        Row: {
+          created_at: string
+          degree: string | null
+          disability: boolean
+          faculty: string | null
+          full_name: string
+          gpa: string | null
+          household_income: string | null
+          id: string
+          id_number: string
+          province: string | null
+          race: string | null
+          supporting_documents: Json | null
+          updated_at: string
+          university: string | null
+          user_id: string
+          year_of_study: string | null
+          gender: string | null
+        }
+        Insert: {
+          created_at?: string
+          degree?: string | null
+          disability?: boolean
+          faculty?: string | null
+          full_name: string
+          gpa?: string | null
+          household_income?: string | null
+          id?: string
+          id_number: string
+          province?: string | null
+          race?: string | null
+          supporting_documents?: Json | null
+          updated_at?: string
+          university?: string | null
+          user_id: string
+          year_of_study?: string | null
+          gender?: string | null
+        }
+        Update: {
+          created_at?: string
+          degree?: string | null
+          disability?: boolean
+          faculty?: string | null
+          full_name?: string
+          gpa?: string | null
+          household_income?: string | null
+          id?: string
+          id_number?: string
+          province?: string | null
+          race?: string | null
+          supporting_documents?: Json | null
+          updated_at?: string
+          university?: string | null
+          user_id?: string
+          year_of_study?: string | null
+          gender?: string | null
+        }
+        Relationships: []
+      }
+      bursaries: {
+        Row: {
+          application_url: string | null
+          amount: string | null
+          created_at: string
+          deadline: string | null
+          eligibility: Json | null
+          fields_of_study: string[] | null
+          id: string
+          last_scraped_at: string
+          name: string
+          provider: string | null
+          status: "open" | "closed" | "unknown"
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          application_url?: string | null
+          amount?: string | null
+          created_at?: string
+          deadline?: string | null
+          eligibility?: Json | null
+          fields_of_study?: string[] | null
+          id?: string
+          last_scraped_at?: string
+          name: string
+          provider?: string | null
+          status?: "open" | "closed" | "unknown"
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          application_url?: string | null
+          amount?: string | null
+          created_at?: string
+          deadline?: string | null
+          eligibility?: Json | null
+          fields_of_study?: string[] | null
+          id?: string
+          last_scraped_at?: string
+          name?: string
+          provider?: string | null
+          status?: "open" | "closed" | "unknown"
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      applications: {
+        Row: {
+          agent_log: string | null
+          bursary_id: string
+          created_at: string
+          id: string
+          screenshot_url: string | null
+          status: "pending" | "submitted" | "failed" | "reviewing"
+          submitted_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agent_log?: string | null
+          bursary_id: string
+          created_at?: string
+          id?: string
+          screenshot_url?: string | null
+          status?: "pending" | "submitted" | "failed" | "reviewing"
+          submitted_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agent_log?: string | null
+          bursary_id?: string
+          created_at?: string
+          id?: string
+          screenshot_url?: string | null
+          status?: "pending" | "submitted" | "failed" | "reviewing"
+          submitted_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

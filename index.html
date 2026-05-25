@@ -38,6 +38,17 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.gpteng.co https://unpkg.com 'unsafe-inline';
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+      img-src 'self' data: https:;
+      font-src 'self' https:;
+      connect-src 'self' https://*.supabase.co https://primary-production-4a757.up.railway.app ws://localhost:* wss://*.app.github.dev;
+      frame-src 'none';
+      object-src 'none';
+      base-uri 'self';
+    " />
  
     
 
