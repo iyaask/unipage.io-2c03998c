@@ -11,6 +11,7 @@ import Settings from "./Settings";
 import PapaAI from "./PapaAI";
 import WhatsAppConnect from "./WhatsAppConnect";
 import DashboardHome from "./DashboardHome";
+import AiApply from "./AiApply";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -54,6 +55,7 @@ const Dashboard = () => {
               <Route path="profile" element={<Profile />} />
               <Route path="bursaries" element={<Bursaries />} />
               <Route path="bursary-matches" element={<BursaryMatches />} />
+              <Route path="ai-apply" element={<AiApply />} />
               <Route path="settings" element={<Settings />} />
               <Route path="papa-ai" element={<PapaAI />} />
               <Route path="whatsapp" element={<WhatsAppConnect />} />
