@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Loader2, ExternalLink, CheckCircle2, Clock, XCircle, Eye, RefreshCw } from "lucide-react";
+import { Sparkles, Loader2, ExternalLink, CheckCircle2, Clock, XCircle, Eye, RefreshCw, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,7 @@ import type { Database } from "@/integrations/supabase/types";
 type Application = Database["public"]["Tables"]["applications"]["Row"];
 
 const APPLY_WEBHOOK_URL = (import.meta.env.VITE_APPLY_AGENT_WEBHOOK_URL as string | undefined) ?? "";
+const FREE_APPLICATION_LIMIT = 10;
 
 const statusMeta: Record<Application["status"], { label: string; icon: any; className: string }> = {
   pending:    { label: "Pending",    icon: Clock,        className: "bg-amber-100 text-amber-900 border-amber-200" },
@@ -94,9 +95,20 @@ const AiApply = () => {
   }, [applications]);
 
   const activeAgents = applications.filter((a) => a.status === "pending" || a.status === "reviewing").length;
+  const usedApplications = applications.length;
+  const remainingFree = Math.max(0, FREE_APPLICATION_LIMIT - usedApplications);
+  const limitReached = usedApplications >= FREE_APPLICATION_LIMIT;
 
   const handleApply = async (bursaryId: string) => {
     if (!user) return;
+    if (limitReached) {
+      toast({
+        title: "Free limit reached",
+        description: `You've used all ${FREE_APPLICATION_LIMIT} free AI applications.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setApplyingId(bursaryId);
     try {
       // 1. Create a pending application row so the dashboard updates instantly
