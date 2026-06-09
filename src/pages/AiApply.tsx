@@ -317,7 +317,7 @@ const AiApply = () => {
                         <Button
                           size="sm"
                           onClick={() => handleApply(bursary.id)}
-                          disabled={applyingId === bursary.id || bursary.status === "closed"}
+                          disabled={applyingId === bursary.id || bursary.status === "closed" || limitReached}
                         >
                           {applyingId === bursary.id ? (
                             <Loader2 className="w-4 h-4 mr-1 animate-spin" />
