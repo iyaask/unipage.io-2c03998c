@@ -166,10 +166,34 @@ const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
+        {/* My Agent group */}
+        <SidebarGroup className="px-2 py-1">
+          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
+            My Agent
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {agentItems.map(renderItem)}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Sessions group */}
+        <SidebarGroup className="px-2 py-1">
+          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
+            Sessions
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {sessionItems.map(renderItem)}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
         {/* Bursary Agent group */}
         <SidebarGroup className="px-2 py-1">
           <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Bursary Agent
+            Bursary tools
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -177,6 +201,7 @@ const DashboardSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
 
         {/* Bottom section */}
         <div className="mt-auto">
