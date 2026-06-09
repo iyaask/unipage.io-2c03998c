@@ -196,6 +196,35 @@ const AiApply = () => {
         </div>
       </header>
 
+      {/* Free tier banner */}
+      <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0">
+            <Gift className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">
+              {remainingFree} of {FREE_APPLICATION_LIMIT} free AI applications left
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Your AI agent applies to up to {FREE_APPLICATION_LIMIT} bursaries on your behalf — no card required.
+            </p>
+          </div>
+        </div>
+        <div className="w-full sm:w-48">
+          <div className="h-2 rounded-full bg-muted overflow-hidden">
+            <div
+              className="h-full bg-primary transition-all"
+              style={{ width: `${Math.min(100, (usedApplications / FREE_APPLICATION_LIMIT) * 100)}%` }}
+            />
+          </div>
+          <p className="mt-1.5 text-[11px] text-muted-foreground text-right">
+            {usedApplications}/{FREE_APPLICATION_LIMIT} used
+          </p>
+        </div>
+      </div>
+
+
       {/* Application status timeline */}
       {applications.length > 0 && (
         <section>
