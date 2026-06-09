@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import featureDiscover from "@/assets/feature-discover.webp";
+import featureDiscover from "@/assets/feature-discover-v2.jpg";
 import featureMatch from "@/assets/feature-match.webp";
-import featureAlerts from "@/assets/feature-alerts.webp";
-import featureApply from "@/assets/feature-apply.webp";
+import featureAlerts from "@/assets/feature-alerts-v2.jpg";
+import featureApply from "@/assets/feature-apply-v2.jpg";
 
 const steps = [
 {
