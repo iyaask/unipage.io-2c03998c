@@ -1,5 +1,5 @@
 
-import { User, Settings, Award, LogOut, BarChart3, MessageCircle, Home, Sparkles } from "lucide-react";
+import { User, Settings, Award, LogOut, BarChart3, MessageCircle, Home, Sparkles, Bot, Activity, Inbox } from "lucide-react";
 import papaAiAvatar from "@/assets/papa-ai-avatar.png";
 import {
   Sidebar,
@@ -39,6 +39,32 @@ const papaAiItems = [
   },
 ];
 
+const agentItems = [
+  {
+    title: "Create Agent",
+    icon: Bot,
+    path: "/dashboard/create-agent",
+  },
+  {
+    title: "AI Apply",
+    icon: Sparkles,
+    path: "/dashboard/ai-apply",
+  },
+];
+
+const sessionItems = [
+  {
+    title: "Sessions",
+    icon: Activity,
+    path: "/dashboard/sessions",
+  },
+  {
+    title: "Inbox",
+    icon: Inbox,
+    path: "/dashboard/inbox",
+  },
+];
+
 const bursaryItems = [
   {
     title: "Bursaries Agent",
@@ -49,11 +75,6 @@ const bursaryItems = [
     title: "My Matches",
     icon: BarChart3,
     path: "/dashboard/bursary-matches",
-  },
-  {
-    title: "AI Apply",
-    icon: Sparkles,
-    path: "/dashboard/ai-apply",
   },
   {
     title: "WhatsApp Connect",
