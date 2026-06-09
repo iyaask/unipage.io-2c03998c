@@ -12,6 +12,9 @@ import PapaAI from "./PapaAI";
 import WhatsAppConnect from "./WhatsAppConnect";
 import DashboardHome from "./DashboardHome";
 import AiApply from "./AiApply";
+import CreateAgent from "./CreateAgent";
+import Sessions from "./Sessions";
+import Inbox from "./Inbox";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -56,6 +59,9 @@ const Dashboard = () => {
               <Route path="bursaries" element={<Bursaries />} />
               <Route path="bursary-matches" element={<BursaryMatches />} />
               <Route path="ai-apply" element={<AiApply />} />
+              <Route path="create-agent" element={<CreateAgent />} />
+              <Route path="sessions" element={<Sessions />} />
+              <Route path="inbox" element={<Inbox />} />
               <Route path="settings" element={<Settings />} />
               <Route path="papa-ai" element={<PapaAI />} />
               <Route path="whatsapp" element={<WhatsAppConnect />} />

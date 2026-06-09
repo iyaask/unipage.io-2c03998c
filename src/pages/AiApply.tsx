@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Loader2, ExternalLink, CheckCircle2, Clock, XCircle, Eye, RefreshCw } from "lucide-react";
+import { Sparkles, Loader2, ExternalLink, CheckCircle2, Clock, XCircle, Eye, RefreshCw, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,7 @@ import type { Database } from "@/integrations/supabase/types";
 type Application = Database["public"]["Tables"]["applications"]["Row"];
 
 const APPLY_WEBHOOK_URL = (import.meta.env.VITE_APPLY_AGENT_WEBHOOK_URL as string | undefined) ?? "";
+const FREE_APPLICATION_LIMIT = 10;
 
 const statusMeta: Record<Application["status"], { label: string; icon: any; className: string }> = {
   pending:    { label: "Pending",    icon: Clock,        className: "bg-amber-100 text-amber-900 border-amber-200" },
@@ -94,9 +95,20 @@ const AiApply = () => {
   }, [applications]);
 
   const activeAgents = applications.filter((a) => a.status === "pending" || a.status === "reviewing").length;
+  const usedApplications = applications.length;
+  const remainingFree = Math.max(0, FREE_APPLICATION_LIMIT - usedApplications);
+  const limitReached = usedApplications >= FREE_APPLICATION_LIMIT;
 
   const handleApply = async (bursaryId: string) => {
     if (!user) return;
+    if (limitReached) {
+      toast({
+        title: "Free limit reached",
+        description: `You've used all ${FREE_APPLICATION_LIMIT} free AI applications.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setApplyingId(bursaryId);
     try {
       // 1. Create a pending application row so the dashboard updates instantly
@@ -183,6 +195,35 @@ const AiApply = () => {
           </Button>
         </div>
       </header>
+
+      {/* Free tier banner */}
+      <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0">
+            <Gift className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">
+              {remainingFree} of {FREE_APPLICATION_LIMIT} free AI applications left
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Your AI agent applies to up to {FREE_APPLICATION_LIMIT} bursaries on your behalf — no card required.
+            </p>
+          </div>
+        </div>
+        <div className="w-full sm:w-48">
+          <div className="h-2 rounded-full bg-muted overflow-hidden">
+            <div
+              className="h-full bg-primary transition-all"
+              style={{ width: `${Math.min(100, (usedApplications / FREE_APPLICATION_LIMIT) * 100)}%` }}
+            />
+          </div>
+          <p className="mt-1.5 text-[11px] text-muted-foreground text-right">
+            {usedApplications}/{FREE_APPLICATION_LIMIT} used
+          </p>
+        </div>
+      </div>
+
 
       {/* Application status timeline */}
       {applications.length > 0 && (
@@ -276,7 +317,7 @@ const AiApply = () => {
                         <Button
                           size="sm"
                           onClick={() => handleApply(bursary.id)}
-                          disabled={applyingId === bursary.id || bursary.status === "closed"}
+                          disabled={applyingId === bursary.id || bursary.status === "closed" || limitReached}
                         >
                           {applyingId === bursary.id ? (
                             <Loader2 className="w-4 h-4 mr-1 animate-spin" />
