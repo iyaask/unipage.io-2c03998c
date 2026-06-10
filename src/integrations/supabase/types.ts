@@ -14,7 +14,266 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          agent_log: string | null
+          bursary_id: string
+          created_at: string
+          id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agent_log?: string | null
+          bursary_id: string
+          created_at?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agent_log?: string | null
+          bursary_id?: string
+          created_at?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_bursary_id_fkey"
+            columns: ["bursary_id"]
+            isOneToOne: false
+            referencedRelation: "bursaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bursaries: {
+        Row: {
+          amount: string | null
+          created_at: string
+          deadline: string | null
+          eligibility: Json | null
+          fields_of_study: string[] | null
+          id: string
+          name: string
+          provider: string | null
+          status: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          amount?: string | null
+          created_at?: string
+          deadline?: string | null
+          eligibility?: Json | null
+          fields_of_study?: string[] | null
+          id?: string
+          name: string
+          provider?: string | null
+          status?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          amount?: string | null
+          created_at?: string
+          deadline?: string | null
+          eligibility?: Json | null
+          fields_of_study?: string[] | null
+          id?: string
+          name?: string
+          provider?: string | null
+          status?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      bursary_requirements: {
+        Row: {
+          bursary_name: string
+          created_at: string
+          deadline: string | null
+          id: string
+          provider: string | null
+          requirements: string | null
+          source_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          bursary_name: string
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          provider?: string | null
+          requirements?: string | null
+          source_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          bursary_name?: string
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          provider?: string | null
+          requirements?: string | null
+          source_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      comparagent_results: {
+        Row: {
+          created_at: string
+          id: string
+          matches: Json | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          matches?: Json | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          matches?: Json | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      given_bursary_info: {
+        Row: {
+          created_at: string
+          id: string
+          payload: Json | null
+          summary: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          payload?: Json | null
+          summary?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          payload?: Json | null
+          summary?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          "contact information": number | null
+          "country of citizenship": string | null
+          created_at: string
+          "email address": string | null
+          "full name": string | null
+          id: string
+          marks: string | null
+          output: string | null
+          "preferred language": string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          "contact information"?: number | null
+          "country of citizenship"?: string | null
+          created_at?: string
+          "email address"?: string | null
+          "full name"?: string | null
+          id: string
+          marks?: string | null
+          output?: string | null
+          "preferred language"?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          "contact information"?: number | null
+          "country of citizenship"?: string | null
+          created_at?: string
+          "email address"?: string | null
+          "full name"?: string | null
+          id?: string
+          marks?: string | null
+          output?: string | null
+          "preferred language"?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      student_profiles: {
+        Row: {
+          created_at: string
+          degree: string | null
+          disability: boolean | null
+          faculty: string | null
+          full_name: string | null
+          gender: string | null
+          gpa: number | null
+          household_income: string | null
+          id: string
+          id_number: string | null
+          province: string | null
+          race: string | null
+          supporting_documents: Json | null
+          university: string | null
+          updated_at: string
+          user_id: string
+          year_of_study: string | null
+        }
+        Insert: {
+          created_at?: string
+          degree?: string | null
+          disability?: boolean | null
+          faculty?: string | null
+          full_name?: string | null
+          gender?: string | null
+          gpa?: number | null
+          household_income?: string | null
+          id?: string
+          id_number?: string | null
+          province?: string | null
+          race?: string | null
+          supporting_documents?: Json | null
+          university?: string | null
+          updated_at?: string
+          user_id: string
+          year_of_study?: string | null
+        }
+        Update: {
+          created_at?: string
+          degree?: string | null
+          disability?: boolean | null
+          faculty?: string | null
+          full_name?: string | null
+          gender?: string | null
+          gpa?: number | null
+          household_income?: string | null
+          id?: string
+          id_number?: string | null
+          province?: string | null
+          race?: string | null
+          supporting_documents?: Json | null
+          university?: string | null
+          updated_at?: string
+          user_id?: string
+          year_of_study?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
