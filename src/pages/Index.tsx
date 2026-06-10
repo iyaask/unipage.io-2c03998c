@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Hero from "@/components/hero/Hero";
-import Features from "@/components/features/Features";
+
 import WhatWeOffer from "@/components/features/WhatWeOffer";
 import VideoDemo from "@/components/video/VideoDemo";
 import Testimonials from "@/components/testimonials/Testimonials";
@@ -54,9 +54,7 @@ const Index = () => {
       {/* Video Demo Section */}
       <VideoDemo />
       
-      <ScrollRevealSection animation="fade-up" delay={400}>
-        <Features />
-      </ScrollRevealSection>
+      
       
       <ScrollRevealSection animation="slide-up" delay={200}>
         <Testimonials />
