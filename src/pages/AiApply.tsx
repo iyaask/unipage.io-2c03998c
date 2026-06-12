@@ -63,29 +63,18 @@ const AiApply = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
 
-  // Realtime updates on the applications table for this user
+  // Realtime WebSocket is blocked by the Lovable preview proxy — poll instead.
   useEffect(() => {
     if (!user) return;
-    const channel = supabase
-      .channel(`apps:${user.id}`)
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "applications", filter: `user_id=eq.${user.id}` },
-        (payload) => {
-          setApplications((prev) => {
-            if (payload.eventType === "INSERT") return [payload.new as Application, ...prev];
-            if (payload.eventType === "UPDATE")
-              return prev.map((a) => (a.id === (payload.new as Application).id ? (payload.new as Application) : a));
-            if (payload.eventType === "DELETE")
-              return prev.filter((a) => a.id !== (payload.old as Application).id);
-            return prev;
-          });
-        }
-      )
-      .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    const interval = setInterval(async () => {
+      const { data } = await supabase
+        .from("applications")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+      if (data) setApplications(data as Application[]);
+    }, 15000);
+    return () => clearInterval(interval);
   }, [user?.id]);
 
   const appsByBursary = useMemo(() => {
