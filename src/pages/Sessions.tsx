@@ -36,13 +36,18 @@ const Sessions = () => {
 
   useEffect(() => {
     if (!user) return;
-    const ch = supabase
-      .channel(`sessions:${user.id}`)
-      .on("postgres_changes",
-        { event: "*", schema: "public", table: "applications", filter: `user_id=eq.${user.id}` },
-        () => load())
-      .subscribe();
-    return () => { supabase.removeChannel(ch); };
+    let channel: ReturnType<typeof supabase.channel> | null = null;
+    try {
+      channel = supabase
+        .channel(`sessions:${user.id}`)
+        .on("postgres_changes",
+          { event: "*", schema: "public", table: "applications", filter: `user_id=eq.${user.id}` },
+          () => load());
+      channel.subscribe();
+    } catch (e) {
+      console.warn("Realtime unavailable (likely preview proxy). Falling back to manual refresh.", e);
+    }
+    return () => { if (channel) { try { supabase.removeChannel(channel); } catch {} } };
   }, [user?.id]);
 
   const active = apps.filter(a => a.status === "pending" || a.status === "reviewing");
