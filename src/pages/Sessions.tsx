@@ -36,18 +36,10 @@ const Sessions = () => {
 
   useEffect(() => {
     if (!user) return;
-    let channel: ReturnType<typeof supabase.channel> | null = null;
-    try {
-      channel = supabase
-        .channel(`sessions:${user.id}`)
-        .on("postgres_changes",
-          { event: "*", schema: "public", table: "applications", filter: `user_id=eq.${user.id}` },
-          () => load());
-      channel.subscribe();
-    } catch (e) {
-      console.warn("Realtime unavailable (likely preview proxy). Falling back to manual refresh.", e);
-    }
-    return () => { if (channel) { try { supabase.removeChannel(channel); } catch {} } };
+    // Realtime WebSocket is blocked by the Lovable preview proxy — poll instead.
+    // On the published URL, WS works; we still poll as a safe fallback.
+    const id = setInterval(() => load(), 15000);
+    return () => clearInterval(id);
   }, [user?.id]);
 
   const active = apps.filter(a => a.status === "pending" || a.status === "reviewing");
