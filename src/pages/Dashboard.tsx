@@ -8,8 +8,8 @@ import Profile from "./Profile";
 import Bursaries from "./Bursaries";
 import BursaryMatches from "./BursaryMatches";
 import Settings from "./Settings";
-import PapaAI from "./PapaAI";
 import WhatsAppConnect from "./WhatsAppConnect";
+import PapaAIWidget from "@/components/chat/PapaAIWidget";
 import DashboardHome from "./DashboardHome";
 import AiApply from "./AiApply";
 import CreateAgent from "./CreateAgent";
@@ -63,12 +63,12 @@ const Dashboard = () => {
               <Route path="sessions" element={<Sessions />} />
               <Route path="inbox" element={<Inbox />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="papa-ai" element={<PapaAI />} />
               <Route path="whatsapp" element={<WhatsAppConnect />} />
               <Route index element={<Profile />} />
             </Routes>
           </div>
         </main>
+        <PapaAIWidget />
       </div>
     </SidebarProvider>
   );
