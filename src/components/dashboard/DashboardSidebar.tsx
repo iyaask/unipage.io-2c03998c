@@ -1,6 +1,5 @@
 
 import { User, Settings, Award, LogOut, BarChart3, MessageCircle, Home, Sparkles, Bot, Activity, Inbox } from "lucide-react";
-import papaAiAvatar from "@/assets/papa-ai-avatar.png";
 import {
   Sidebar,
   SidebarContent,
@@ -22,20 +21,6 @@ const profileItems = [
     title: "My Profile",
     icon: User,
     path: "/dashboard/profile",
-  },
-  {
-    title: "Settings",
-    icon: Settings,
-    path: "/dashboard/settings",
-  },
-];
-
-const papaAiItems = [
-  {
-    title: "Papa AI",
-    icon: null,
-    customIcon: papaAiAvatar,
-    path: "/dashboard/papa-ai",
   },
 ];
 
@@ -154,18 +139,6 @@ const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Papa AI group - now before Bursary Agent */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Papa AI
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {papaAiItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
         {/* My Agent group */}
         <SidebarGroup className="px-2 py-1">
           <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
@@ -213,6 +186,17 @@ const DashboardSidebar = () => {
             >
               <Home className="w-4 h-4 shrink-0" />
               <span>Back to Home</span>
+            </button>
+            <button
+              onClick={() => navigate("/dashboard/settings")}
+              className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                location.pathname === "/dashboard/settings"
+                  ? "bg-primary/8 text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              <Settings className="w-4 h-4 shrink-0" />
+              <span>Settings</span>
             </button>
             <button
               onClick={handleLogout}
