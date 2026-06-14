@@ -20,10 +20,10 @@ const FeatureCards = () => {
       title: "Course Matching",
       description: "Smart algorithms analyze your grades to find courses you qualify for",
       icon: GraduationCap,
-      bgColor: "bg-gradient-to-br from-purple-500 to-indigo-600",
+      bgColor: "bg-gradient-to-br from-slate-500 to-slate-600",
       cardColor: "bg-white/95 backdrop-blur-sm",
-      iconBg: "bg-purple-100",
-      iconColor: "text-purple-600",
+      iconBg: "bg-slate-100",
+      iconColor: "text-slate-600",
       arrowBg: "bg-white/20"
     },
     {

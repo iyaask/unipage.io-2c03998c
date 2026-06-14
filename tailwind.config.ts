@@ -28,11 +28,11 @@ export default {
         border: "hsl(var(--border))",
         foreground: "hsl(var(--foreground))",
         // New color theme
-        primary: "#8338ec", // Purple
-        secondary: "#3a86ff", // Blue
-        accent: "#ffbe0b", // Yellow
-        highlight: "#fb5607", // Orange
-        bright: "#ff006e", // Pink
+        primary: "#0F172A", // Purple
+        secondary: "#0F172A", // Blue
+        accent: "#0F172A", // Yellow
+        highlight: "#0F172A", // Orange
+        bright: "#0F172A", // Pink
         background: "#FFFFFF",
         "text-primary": "#1a1a1a",
         "text-secondary": "#4a4a4a",

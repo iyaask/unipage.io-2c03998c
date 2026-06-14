@@ -33,7 +33,7 @@ const Features = () => {
         "Students spend 40+ hours searching for funding. Our agents surface every opportunity you qualify for in under 2 minutes.",
     },
     {
-      icon: <CheckCircle className="h-8 w-8 text-purple-400" />,
+      icon: <CheckCircle className="h-8 w-8 text-slate-400" />,
       title: "Addressing a $2.1B Funding Gap",
       description:
         "Billions in bursaries go unclaimed every year because students don't know they exist. Our agents close that gap automatically.",

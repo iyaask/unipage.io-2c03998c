@@ -13,10 +13,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #fb5607aa);
+  filter: drop-shadow(0 0 2em #0F172Aaa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #3a86ffaa);
+  filter: drop-shadow(0 0 2em #0F172Aaa);
 }
 
 @keyframes logo-spin {
@@ -53,7 +53,7 @@
 .unipage-title {
   font-weight: 700;
   letter-spacing: -0.5px;
-  background: linear-gradient(to right, #8338ec, #3a86ff);
+  background: linear-gradient(to right, #0F172A, #0F172A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -73,20 +73,20 @@
 
 /* Colorful gradient backgrounds */
 .gradient-bg-primary {
-  background: linear-gradient(135deg, #8338ec 0%, #3a86ff 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #0F172A 100%);
 }
 
 .gradient-bg-secondary {
-  background: linear-gradient(135deg, #ffbe0b 0%, #fb5607 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #0F172A 100%);
 }
 
 .gradient-bg-accent {
-  background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #0F172A 100%);
 }
 
 /* Button styles with the new theme */
 .colorful-button {
-  background: linear-gradient(90deg, #fb5607, #ff006e);
+  background: linear-gradient(90deg, #0F172A, #0F172A);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -97,15 +97,15 @@
 }
 
 .colorful-button:hover {
-  background: linear-gradient(90deg, #ff006e, #fb5607);
+  background: linear-gradient(90deg, #0F172A, #0F172A);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(251, 86, 7, 0.5);
 }
 
 .outline-button {
   background: transparent;
-  color: #8338ec;
-  border: 2px solid #8338ec;
+  color: #0F172A;
+  border: 2px solid #0F172A;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;

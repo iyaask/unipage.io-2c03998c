@@ -179,7 +179,7 @@ export default function PapaAIChat() {
                   message.sender === "user" ? "flex-row-reverse space-x-reverse" : ""
                 }`}>
                   {message.sender === "user" ? (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-violet-700 text-white text-sm font-medium flex-shrink-0">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-slate-700 text-white text-sm font-medium flex-shrink-0">
                       U
                     </div>
                   ) : (
@@ -187,7 +187,7 @@ export default function PapaAIChat() {
                   )}
                   <div className={`rounded-lg p-3 text-sm sm:text-base ${
                     message.sender === "user" 
-                      ? "bg-violet-700 text-white" 
+                      ? "bg-slate-700 text-white" 
                       : "bg-gray-800 text-white"
                   }`}>
                     {message.content}
@@ -221,7 +221,7 @@ export default function PapaAIChat() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything..."
-              className="flex-1 bg-gray-900 border border-gray-700 text-white placeholder:text-gray-400 text-sm sm:text-base rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-violet-600"
+              className="flex-1 bg-gray-900 border border-gray-700 text-white placeholder:text-gray-400 text-sm sm:text-base rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-slate-600"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                   e.preventDefault();
@@ -232,7 +232,7 @@ export default function PapaAIChat() {
             />
             <button 
               onClick={handleSubmit}
-              className="bg-violet-700 hover:bg-violet-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white h-10 w-10 sm:h-12 sm:w-12 rounded-md flex items-center justify-center transition-colors"
+              className="bg-slate-700 hover:bg-slate-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white h-10 w-10 sm:h-12 sm:w-12 rounded-md flex items-center justify-center transition-colors"
               disabled={isLoading || !input.trim()}
             >
               <Send className="h-4 w-4 sm:h-5 sm:w-5" />
