@@ -235,7 +235,7 @@ const Auth = () => {
                 </div>
                 
                 <div className="text-right">
-                  <button type="button" className="text-sm text-violet-600 hover:text-violet-700">
+                  <button type="button" className="text-sm text-slate-600 hover:text-slate-700">
                     Forgot Password?
                   </button>
                 </div>

@@ -40,11 +40,11 @@ const TestimonialCard = ({
   color: string;
 }) => {
   const colorMap: { [key: string]: string } = {
-    accent: "#ffbe0b",
-    primary: "#8338ec",
-    highlight: "#fb5607",
-    bright: "#ff006e",
-    secondary: "#3a86ff",
+    accent: "#0F172A",
+    primary: "#0F172A",
+    highlight: "#0F172A",
+    bright: "#0F172A",
+    secondary: "#0F172A",
   };
 
   return (

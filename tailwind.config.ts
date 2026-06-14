@@ -27,15 +27,15 @@ export default {
       colors: {
         border: "hsl(var(--border))",
         foreground: "hsl(var(--foreground))",
-        // New color theme
-        primary: "#8338ec", // Purple
-        secondary: "#3a86ff", // Blue
-        accent: "#ffbe0b", // Yellow
-        highlight: "#fb5607", // Orange
-        bright: "#ff006e", // Pink
+        // Two-color theme: dark navy + white
+        primary: "#0F172A",
+        secondary: "#FFFFFF",
+        accent: "#0F172A",
+        highlight: "#0F172A",
+        bright: "#0F172A",
         background: "#FFFFFF",
-        "text-primary": "#1a1a1a",
-        "text-secondary": "#4a4a4a",
+        "text-primary": "#0F172A",
+        "text-secondary": "#0F172A",
       },
       keyframes: {
         "fade-up": {
