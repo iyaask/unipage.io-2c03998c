@@ -28,9 +28,34 @@ export default {
         border: "hsl(var(--border))",
         foreground: "hsl(var(--foreground))",
         // Two-color theme: dark navy + white
-        primary: "#0F172A",
-        secondary: "#FFFFFF",
-        accent: "#0F172A",
+        primary: {
+          DEFAULT: "#0F172A",
+          foreground: "#FFFFFF",
+        },
+        secondary: {
+          DEFAULT: "#FFFFFF",
+          foreground: "#0F172A",
+        },
+        accent: {
+          DEFAULT: "#0F172A",
+          foreground: "#FFFFFF",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
         highlight: "#0F172A",
         bright: "#0F172A",
         background: "#FFFFFF",
