@@ -69,7 +69,7 @@ const Hero = ({ onCheckEligibility }: HeroProps) => {
                 <span className="text-white">for you</span>
               </h1>
               <p className="max-w-lg mx-auto lg:mx-0 text-lg md:text-xl text-gray-300 leading-relaxed">
-                Stop searching. Our AI agents automatically discover, match, and apply to bursaries across all South African universities — so you can focus on your studies.
+                Stop searching. Our AI agents automatically discover, match, and apply to bursaries across all South African universities, so you can focus on your studies.
               </p>
             </div>
 
