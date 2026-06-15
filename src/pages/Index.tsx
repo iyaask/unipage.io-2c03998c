@@ -14,7 +14,6 @@ import { ScrollRevealSection } from "@/components/ui/scroll-reveal-section";
 import RollingStats from "@/components/stats/RollingStats";
 import FAQ from "@/components/faq/FAQ";
 import Footer from "@/components/footer/Footer";
-import UniversityMarquee from "@/components/stats/UniversityMarquee";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -43,8 +42,6 @@ const Index = () => {
       <ScrollRevealSection animation="fade-up" delay={100}>
         <RollingStats />
       </ScrollRevealSection>
-
-      <UniversityMarquee />
 
       {/* What We Offer - Univerbal-inspired clean layout */}
       <div id="features-section">
