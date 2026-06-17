@@ -1,4 +1,4 @@
-import { Home, Settings, LogOut } from "lucide-react";
+import { Home, Settings, LogOut, User } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -55,6 +55,17 @@ const DashboardSidebar = () => {
             >
               <Home className="w-4 h-4 shrink-0" />
               <span>Back to Home</span>
+            </button>
+            <button
+              onClick={() => navigate("/dashboard/profile")}
+              className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                location.pathname === "/dashboard/profile"
+                  ? "bg-primary/8 text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              <User className="w-4 h-4 shrink-0" />
+              <span>Profile</span>
             </button>
             <button
               onClick={() => navigate("/dashboard/settings")}

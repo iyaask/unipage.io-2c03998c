@@ -3,6 +3,7 @@ import { useNavigate, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import Settings from "./Settings";
+import Profile from "./Profile";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -39,6 +40,7 @@ const Dashboard = () => {
           </div>
           <div className="p-6 md:p-10">
             <Routes>
+              <Route path="profile" element={<Profile />} />
               <Route path="settings" element={<Settings />} />
               <Route index element={<div />} />
             </Routes>
