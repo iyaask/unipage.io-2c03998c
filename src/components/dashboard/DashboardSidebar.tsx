@@ -1,72 +1,13 @@
-
-import { User, Settings, Award, LogOut, BarChart3, MessageCircle, Home, Sparkles, Bot, Activity, Inbox } from "lucide-react";
+import { Home, Settings, LogOut } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
-
-const profileItems = [
-  {
-    title: "My Profile",
-    icon: User,
-    path: "/dashboard/profile",
-  },
-];
-
-const agentItems = [
-  {
-    title: "Create Agent",
-    icon: Bot,
-    path: "/dashboard/create-agent",
-  },
-  {
-    title: "AI Apply",
-    icon: Sparkles,
-    path: "/dashboard/ai-apply",
-  },
-];
-
-const sessionItems = [
-  {
-    title: "Sessions",
-    icon: Activity,
-    path: "/dashboard/sessions",
-  },
-  {
-    title: "Inbox",
-    icon: Inbox,
-    path: "/dashboard/inbox",
-  },
-];
-
-const bursaryItems = [
-  {
-    title: "Bursaries Agent",
-    icon: Award,
-    path: "/dashboard/bursaries",
-  },
-  {
-    title: "My Matches",
-    icon: BarChart3,
-    path: "/dashboard/bursary-matches",
-  },
-  {
-    title: "WhatsApp Connect",
-    icon: MessageCircle,
-    path: "/dashboard/whatsapp",
-  },
-];
 
 const DashboardSidebar = () => {
   const navigate = useNavigate();
@@ -91,92 +32,20 @@ const DashboardSidebar = () => {
     }
   };
 
-  const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
-
-  const renderItem = (item: { title: string; icon: any; path: string; customIcon?: string }) => {
-    const isActive = location.pathname === item.path;
-    return (
-      <SidebarMenuItem key={item.title}>
-        <SidebarMenuButton
-          onClick={() => navigate(item.path)}
-          tooltip={item.title}
-          className={`rounded-md py-2 px-3 transition-all duration-150 text-[13px] ${
-            isActive
-              ? "bg-primary/8 text-primary font-semibold"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted"
-          }`}
-        >
-          {item.customIcon ? (
-            <img src={item.customIcon} alt={item.title} className="w-4 h-4 mr-2.5 shrink-0 rounded-full" />
-          ) : (
-            <item.icon className={`w-4 h-4 mr-2.5 shrink-0 ${isActive ? "text-primary" : ""}`} />
-          )}
-          <span>{item.title}</span>
-        </SidebarMenuButton>
-      </SidebarMenuItem>
-    );
-  };
+  const displayName =
+    user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
 
   return (
     <Sidebar collapsible="icon" className="border-r border-border bg-background">
       <SidebarContent className="bg-background text-foreground h-full flex flex-col">
-        {/* User name header */}
         <div className="px-5 pt-5 pb-3">
           <div className="flex items-center gap-1.5">
-            <span className="text-base font-semibold text-foreground italic">{displayName}</span>
+            <span className="text-base font-semibold text-foreground italic">
+              {displayName}
+            </span>
           </div>
         </div>
 
-        {/* Profile group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Profile
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {profileItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* My Agent group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            My Agent
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {agentItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* Sessions group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Sessions
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {sessionItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* Bursary Agent group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Bursary tools
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {bursaryItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-
-        {/* Bottom section */}
         <div className="mt-auto">
           <Separator />
           <div className="px-3 py-2 space-y-1">

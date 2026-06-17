@@ -1,20 +1,8 @@
-
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
-import { Routes, Route } from "react-router-dom";
-import Profile from "./Profile";
-import Bursaries from "./Bursaries";
-import BursaryMatches from "./BursaryMatches";
 import Settings from "./Settings";
-import WhatsAppConnect from "./WhatsAppConnect";
-import PapaAIWidget from "@/components/chat/PapaAIWidget";
-import DashboardHome from "./DashboardHome";
-import AiApply from "./AiApply";
-import CreateAgent from "./CreateAgent";
-import Sessions from "./Sessions";
-import Inbox from "./Inbox";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -27,7 +15,6 @@ const Dashboard = () => {
     }
   }, [user, isLoading, navigate]);
 
-  // Don't redirect while auth state is still resolving (e.g. returning from Google OAuth)
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -40,35 +27,23 @@ const Dashboard = () => {
     );
   }
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
         <DashboardSidebar />
         <main className="flex-1 transition-all duration-200 w-full">
-          {/* Top bar - minimal */}
           <div className="sticky top-0 z-20 h-12 px-4 bg-background border-b flex items-center">
             <SidebarTrigger />
           </div>
           <div className="p-6 md:p-10">
             <Routes>
-              <Route path="profile" element={<Profile />} />
-              <Route path="bursaries" element={<Bursaries />} />
-              <Route path="bursary-matches" element={<BursaryMatches />} />
-              <Route path="ai-apply" element={<AiApply />} />
-              <Route path="create-agent" element={<CreateAgent />} />
-              <Route path="sessions" element={<Sessions />} />
-              <Route path="inbox" element={<Inbox />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="whatsapp" element={<WhatsAppConnect />} />
-              <Route index element={<Profile />} />
+              <Route index element={<div />} />
             </Routes>
           </div>
         </main>
-        <PapaAIWidget />
       </div>
     </SidebarProvider>
   );
