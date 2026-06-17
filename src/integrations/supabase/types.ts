@@ -172,6 +172,255 @@ export type Database = {
         }
         Relationships: []
       }
+      profile_application_defaults: {
+        Row: {
+          availability: string | null
+          created_at: string
+          notes: string | null
+          preferred_location: string | null
+          salary_expectation: string | null
+          updated_at: string
+          user_id: string
+          work_authorization: string | null
+        }
+        Insert: {
+          availability?: string | null
+          created_at?: string
+          notes?: string | null
+          preferred_location?: string | null
+          salary_expectation?: string | null
+          updated_at?: string
+          user_id: string
+          work_authorization?: string | null
+        }
+        Update: {
+          availability?: string | null
+          created_at?: string
+          notes?: string | null
+          preferred_location?: string | null
+          salary_expectation?: string | null
+          updated_at?: string
+          user_id?: string
+          work_authorization?: string | null
+        }
+        Relationships: []
+      }
+      profile_certifications: {
+        Row: {
+          created_at: string
+          id: string
+          issue_date: string | null
+          issuer: string | null
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          issue_date?: string | null
+          issuer?: string | null
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          issue_date?: string | null
+          issuer?: string | null
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profile_documents: {
+        Row: {
+          created_at: string
+          doc_type: string | null
+          id: string
+          mime_type: string | null
+          name: string
+          size_bytes: number | null
+          storage_path: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          doc_type?: string | null
+          id?: string
+          mime_type?: string | null
+          name: string
+          size_bytes?: number | null
+          storage_path: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string | null
+          id?: string
+          mime_type?: string | null
+          name?: string
+          size_bytes?: number | null
+          storage_path?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profile_education: {
+        Row: {
+          created_at: string
+          degree: string | null
+          end_year: string | null
+          field: string | null
+          id: string
+          institution: string
+          start_year: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          degree?: string | null
+          end_year?: string | null
+          field?: string | null
+          id?: string
+          institution: string
+          start_year?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          degree?: string | null
+          end_year?: string | null
+          field?: string | null
+          id?: string
+          institution?: string
+          start_year?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profile_experience: {
+        Row: {
+          company: string | null
+          created_at: string
+          description: string | null
+          end_date: string | null
+          id: string
+          role: string
+          start_date: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          role: string
+          start_date?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          role?: string
+          start_date?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profile_extras: {
+        Row: {
+          created_at: string
+          linkedin_url: string | null
+          location: string | null
+          summary: string | null
+          updated_at: string
+          user_id: string
+          website_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          linkedin_url?: string | null
+          location?: string | null
+          summary?: string | null
+          updated_at?: string
+          user_id: string
+          website_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          linkedin_url?: string | null
+          location?: string | null
+          summary?: string | null
+          updated_at?: string
+          user_id?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
+      profile_projects: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          url: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          url?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          url?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profile_skills: {
+        Row: {
+          created_at: string
+          id: string
+          level: string | null
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          level?: string | null
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          level?: string | null
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           "contact information": number | null
