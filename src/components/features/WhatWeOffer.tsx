@@ -14,7 +14,7 @@ const steps = [
   label: "Discover",
   title: "Auto-discover every bursary",
   description:
-  "Our AI agents continuously scrape and index bursary opportunities from all 26 SA universities, government portals, and private funders — so you never miss a deadline.",
+  "Our AI agents continuously scrape and index bursary opportunities from all 26 SA universities, government portals, and private funders, so you never miss a deadline.",
   image: featureDiscover
 },
 {
@@ -22,7 +22,7 @@ const steps = [
   label: "Match",
   title: "Smart-match to your profile",
   description:
-  "The agent analyzes your grades, financial background, and demographics to instantly match you with every bursary you qualify for — with a 94% accuracy rate.",
+  "The agent analyzes your grades, financial background, and demographics to instantly match you with every bursary you qualify for, with a 94% accuracy rate.",
   image: featureMatch
 },
 {
@@ -38,7 +38,7 @@ const steps = [
   label: "Apply",
   title: "Auto-apply on your behalf",
   description:
-  "Our agents will soon auto-fill and submit bursary applications for you — you review, approve, and let the AI handle the paperwork.",
+  "Our agents will soon auto-fill and submit bursary applications for you. You review, approve, and let the AI handle the paperwork.",
   image: featureApply,
   comingSoon: true
 }];
@@ -166,7 +166,7 @@ const WhatWeOffer = () => {
             Your AI agent handles it all.
           </h2>
           <p className="mt-5 text-white/50 text-base md:text-lg max-w-xl mx-auto">
-            From discovery to application — our agents work around the clock so you can focus on studying.
+            From discovery to application, our agents work around the clock so you can focus on studying.
           </p>
         </motion.div>
 
