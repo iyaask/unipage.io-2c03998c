@@ -1,4 +1,4 @@
-import { Home, Settings, LogOut, User } from "lucide-react";
+import { Home, Settings, LogOut, User, ClipboardList } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -44,6 +44,20 @@ const DashboardSidebar = () => {
               {displayName}
             </span>
           </div>
+        </div>
+
+        <div className="px-3 py-2">
+          <button
+            onClick={() => navigate("/dashboard/tracker")}
+            className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+              location.pathname === "/dashboard/tracker"
+                ? "bg-primary/8 text-primary font-semibold"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            }`}
+          >
+            <ClipboardList className="w-4 h-4 shrink-0" />
+            <span>Tracker</span>
+          </button>
         </div>
 
         <div className="mt-auto">
