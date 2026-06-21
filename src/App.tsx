@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
@@ -41,6 +41,11 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/dashboard/*" element={<Dashboard />} />
+              <Route path="/browse-bursaries" element={<Navigate to="/dashboard/browse-bursaries" replace />} />
+              <Route path="/inbox" element={<Navigate to="/dashboard/inbox" replace />} />
+              <Route path="/tracker" element={<Navigate to="/dashboard/tracker" replace />} />
+              <Route path="/profile" element={<Navigate to="/dashboard/profile" replace />} />
+              <Route path="/settings" element={<Navigate to="/dashboard/settings" replace />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
