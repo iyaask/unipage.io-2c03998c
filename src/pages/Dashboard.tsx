@@ -5,6 +5,7 @@ import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import Settings from "./Settings";
 import Profile from "./Profile";
 import Tracker from "./Tracker";
+import Inbox from "./Inbox";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -43,6 +44,8 @@ const Dashboard = () => {
             <Routes>
               <Route path="profile" element={<Profile />} />
               <Route path="tracker" element={<Tracker />} />
+              <Route path="inbox" element={<Inbox />} />
+              <Route path="browse-jobs" element={<div />} />
               <Route path="settings" element={<Settings />} />
               <Route index element={<div />} />
             </Routes>

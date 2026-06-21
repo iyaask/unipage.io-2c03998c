@@ -1,4 +1,4 @@
-import { Home, Settings, LogOut, User, ClipboardList } from "lucide-react";
+import { Home, Settings, LogOut, User, ClipboardList, LayoutGrid, Search, Mail } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -46,18 +46,32 @@ const DashboardSidebar = () => {
           </div>
         </div>
 
-        <div className="px-3 py-2">
-          <button
-            onClick={() => navigate("/dashboard/tracker")}
-            className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
-              location.pathname === "/dashboard/tracker"
-                ? "bg-primary/8 text-primary font-semibold"
-                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            }`}
-          >
-            <ClipboardList className="w-4 h-4 shrink-0" />
-            <span>Tracker</span>
-          </button>
+        <div className="px-3 py-2 space-y-1">
+          {[
+            { path: "/dashboard", label: "Dashboard", icon: LayoutGrid, exact: true },
+            { path: "/dashboard/browse-jobs", label: "Browse jobs", icon: Search },
+            { path: "/dashboard/inbox", label: "Inbox", icon: Mail },
+            { path: "/dashboard/tracker", label: "Tracker", icon: ClipboardList },
+          ].map((item) => {
+            const Icon = item.icon;
+            const active = item.exact
+              ? location.pathname === item.path
+              : location.pathname === item.path;
+            return (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                  active
+                    ? "bg-primary/8 text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                <Icon className="w-4 h-4 shrink-0" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="mt-auto">
