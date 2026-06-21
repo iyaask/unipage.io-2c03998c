@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import featureDiscover from "@/assets/feature-discover.webp";
+import featureDiscover from "@/assets/feature-discover-v2.jpg";
 import featureMatch from "@/assets/feature-match.webp";
-import featureAlerts from "@/assets/feature-alerts.webp";
-import featureApply from "@/assets/feature-apply.webp";
+import featureAlerts from "@/assets/feature-alerts-v2.jpg";
+import featureApply from "@/assets/feature-apply-v2.jpg";
 
 const steps = [
 {
@@ -14,7 +14,7 @@ const steps = [
   label: "Discover",
   title: "Auto-discover every bursary",
   description:
-  "Our AI agents continuously scrape and index bursary opportunities from all 26 SA universities, government portals, and private funders — so you never miss a deadline.",
+  "Our AI agents continuously scrape and index bursary opportunities from all 26 SA universities, government portals, and private funders, so you never miss a deadline.",
   image: featureDiscover
 },
 {
@@ -22,7 +22,7 @@ const steps = [
   label: "Match",
   title: "Smart-match to your profile",
   description:
-  "The agent analyzes your grades, financial background, and demographics to instantly match you with every bursary you qualify for — with a 94% accuracy rate.",
+  "The agent analyzes your grades, financial background, and demographics to instantly match you with every bursary you qualify for, with a 94% accuracy rate.",
   image: featureMatch
 },
 {
@@ -38,7 +38,7 @@ const steps = [
   label: "Apply",
   title: "Auto-apply on your behalf",
   description:
-  "Our agents will soon auto-fill and submit bursary applications for you — you review, approve, and let the AI handle the paperwork.",
+  "Our agents will soon auto-fill and submit bursary applications for you. You review, approve, and let the AI handle the paperwork.",
   image: featureApply,
   comingSoon: true
 }];
@@ -90,22 +90,6 @@ const StepCard = ({
               alt={step.title}
               className="w-full h-[260px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy" />
-            
-            {/* Floating chat bubble overlay */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 border border-white/10">
-              
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-white/80 text-xs font-medium">
-                  {step.comingSoon ? "Coming soon — agent in development" : "Agent actively working"}
-                </span>
-              </div>
-            </motion.div>
           </div>
         </div>
       </motion.div>
@@ -182,7 +166,7 @@ const WhatWeOffer = () => {
             Your AI agent handles it all.
           </h2>
           <p className="mt-5 text-white/50 text-base md:text-lg max-w-xl mx-auto">
-            From discovery to application — our agents work around the clock so you can focus on studying.
+            From discovery to application, our agents work around the clock so you can focus on studying.
           </p>
         </motion.div>
 

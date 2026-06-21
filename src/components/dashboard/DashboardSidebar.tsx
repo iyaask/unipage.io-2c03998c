@@ -1,66 +1,31 @@
-
-import { User, Settings, Award, LogOut, BarChart3, MessageCircle, Home } from "lucide-react";
-import papaAiAvatar from "@/assets/papa-ai-avatar.png";
+import { Home, Settings, LogOut, User, ClipboardList, LayoutGrid, Search, Mail, MessageCircle, Check } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
-
-const profileItems = [
-  {
-    title: "My Profile",
-    icon: User,
-    path: "/dashboard/profile",
-  },
-  {
-    title: "Settings",
-    icon: Settings,
-    path: "/dashboard/settings",
-  },
-];
-
-const papaAiItems = [
-  {
-    title: "Papa AI",
-    icon: null,
-    customIcon: papaAiAvatar,
-    path: "/dashboard/papa-ai",
-  },
-];
-
-const bursaryItems = [
-  {
-    title: "Bursaries Agent",
-    icon: Award,
-    path: "/dashboard/bursaries",
-  },
-  {
-    title: "My Matches",
-    icon: BarChart3,
-    path: "/dashboard/bursary-matches",
-  },
-  {
-    title: "WhatsApp Connect",
-    icon: MessageCircle,
-    path: "/dashboard/whatsapp",
-  },
-];
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const DashboardSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+  const [whatsappOpen, setWhatsappOpen] = useState(false);
+  const whatsappNumber = "+1 (206) 796-7516";
+  const waLink = `https://wa.me/12067967516?text=${encodeURIComponent("Hi, I'd like to apply for bursaries over WhatsApp.")}`;
 
   const handleLogout = async () => {
     try {
@@ -80,79 +45,95 @@ const DashboardSidebar = () => {
     }
   };
 
-  const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
-
-  const renderItem = (item: { title: string; icon: any; path: string; customIcon?: string }) => {
-    const isActive = location.pathname === item.path;
-    return (
-      <SidebarMenuItem key={item.title}>
-        <SidebarMenuButton
-          onClick={() => navigate(item.path)}
-          tooltip={item.title}
-          className={`rounded-md py-2 px-3 transition-all duration-150 text-[13px] ${
-            isActive
-              ? "bg-primary/8 text-primary font-semibold"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted"
-          }`}
-        >
-          {item.customIcon ? (
-            <img src={item.customIcon} alt={item.title} className="w-4 h-4 mr-2.5 shrink-0 rounded-full" />
-          ) : (
-            <item.icon className={`w-4 h-4 mr-2.5 shrink-0 ${isActive ? "text-primary" : ""}`} />
-          )}
-          <span>{item.title}</span>
-        </SidebarMenuButton>
-      </SidebarMenuItem>
-    );
-  };
+  const displayName =
+    user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
 
   return (
     <Sidebar collapsible="icon" className="border-r border-border bg-background">
       <SidebarContent className="bg-background text-foreground h-full flex flex-col">
-        {/* User name header */}
         <div className="px-5 pt-5 pb-3">
           <div className="flex items-center gap-1.5">
-            <span className="text-base font-semibold text-foreground italic">{displayName}</span>
+            <span className="text-base font-semibold text-foreground italic">
+              {displayName}
+            </span>
           </div>
         </div>
 
-        {/* Profile group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Profile
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {profileItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <div className="px-3 py-2 space-y-1">
+          {[
+            { path: "/dashboard", label: "Dashboard", icon: LayoutGrid, exact: true },
+            { path: "/dashboard/browse-bursaries", label: "Browse bursaries", icon: Search },
+            { path: "/dashboard/inbox", label: "Inbox", icon: Mail },
+            { path: "/dashboard/tracker", label: "Tracker", icon: ClipboardList },
+          ].map((item) => {
+            const Icon = item.icon;
+            const active = item.exact
+              ? location.pathname === item.path
+              : location.pathname === item.path;
+            return (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                  active
+                    ? "bg-primary/8 text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                <Icon className="w-4 h-4 shrink-0" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+          <button
+            onClick={() => setWhatsappOpen(true)}
+            className="flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors text-muted-foreground hover:text-foreground hover:bg-muted"
+          >
+            <MessageCircle className="w-4 h-4 shrink-0" />
+            <span>WhatsApp</span>
+          </button>
+        </div>
 
-        {/* Papa AI group - now before Bursary Agent */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Papa AI
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {papaAiItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <Dialog open={whatsappOpen} onOpenChange={setWhatsappOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <DialogTitle className="text-xl">Apply over WhatsApp</DialogTitle>
+              </div>
+              <DialogDescription className="pt-2">
+                Same flow as iMessage, on WhatsApp.
+              </DialogDescription>
+            </DialogHeader>
+            <ul className="space-y-2.5 py-2">
+              {[
+                "Daily matches delivered to your chat",
+                "Reply yes to apply",
+                "Works on any device with WhatsApp installed",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-2 text-sm">
+                  <Check className="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center justify-between rounded-md bg-muted px-4 py-3 text-sm">
+              <span className="text-muted-foreground">Contact</span>
+              <span className="font-medium">{whatsappNumber}</span>
+            </div>
+            <DialogFooter className="gap-2 sm:gap-2">
+              <Button variant="outline" onClick={() => setWhatsappOpen(false)} className="flex-1">
+                Close
+              </Button>
+              <Button asChild className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
+                <a href={waLink} target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
-        {/* Bursary Agent group */}
-        <SidebarGroup className="px-2 py-1">
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground px-3 mb-0.5">
-            Bursary Agent
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {bursaryItems.map(renderItem)}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* Bottom section */}
         <div className="mt-auto">
           <Separator />
           <div className="px-3 py-2 space-y-1">
@@ -162,6 +143,28 @@ const DashboardSidebar = () => {
             >
               <Home className="w-4 h-4 shrink-0" />
               <span>Back to Home</span>
+            </button>
+            <button
+              onClick={() => navigate("/dashboard/profile")}
+              className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                location.pathname === "/dashboard/profile"
+                  ? "bg-primary/8 text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              <User className="w-4 h-4 shrink-0" />
+              <span>Profile</span>
+            </button>
+            <button
+              onClick={() => navigate("/dashboard/settings")}
+              className={`flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors ${
+                location.pathname === "/dashboard/settings"
+                  ? "bg-primary/8 text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              <Settings className="w-4 h-4 shrink-0" />
+              <span>Settings</span>
             </button>
             <button
               onClick={handleLogout}

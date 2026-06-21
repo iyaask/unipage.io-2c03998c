@@ -89,14 +89,14 @@ const Courses = () => {
       <h1 className="text-3xl font-bold mb-8 mt-12">Courses</h1>
 
       <Card className="max-w-4xl mx-auto mb-8">
-        <CardHeader className="bg-violet-700 text-white rounded-t-lg">
+        <CardHeader className="bg-slate-700 text-white rounded-t-lg">
           <div className="flex items-center gap-3">
             <GraduationCap className="h-8 w-8" />
             <div>
               <CardTitle className="text-xl md:text-2xl">
                 University Courses and Qualifications You Qualify For
               </CardTitle>
-              <CardDescription className="text-violet-100 mt-1">
+              <CardDescription className="text-slate-100 mt-1">
                 Based on your submitted subjects and grades
               </CardDescription>
             </div>

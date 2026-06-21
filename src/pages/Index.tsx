@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Hero from "@/components/hero/Hero";
-import Features from "@/components/features/Features";
+
 import WhatWeOffer from "@/components/features/WhatWeOffer";
 import VideoDemo from "@/components/video/VideoDemo";
 import Testimonials from "@/components/testimonials/Testimonials";
@@ -14,7 +14,6 @@ import { ScrollRevealSection } from "@/components/ui/scroll-reveal-section";
 import RollingStats from "@/components/stats/RollingStats";
 import FAQ from "@/components/faq/FAQ";
 import Footer from "@/components/footer/Footer";
-import UniversityMarquee from "@/components/stats/UniversityMarquee";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -44,8 +43,6 @@ const Index = () => {
         <RollingStats />
       </ScrollRevealSection>
 
-      <UniversityMarquee />
-
       {/* What We Offer - Univerbal-inspired clean layout */}
       <div id="features-section">
         <WhatWeOffer />
@@ -54,9 +51,7 @@ const Index = () => {
       {/* Video Demo Section */}
       <VideoDemo />
       
-      <ScrollRevealSection animation="fade-up" delay={400}>
-        <Features />
-      </ScrollRevealSection>
+      
       
       <ScrollRevealSection animation="slide-up" delay={200}>
         <Testimonials />

@@ -67,7 +67,7 @@ const GradesAndCoursesForm = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-violet-700 hover:bg-violet-800 text-white" 
+              className="w-full bg-slate-700 hover:bg-slate-800 text-white" 
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit"}

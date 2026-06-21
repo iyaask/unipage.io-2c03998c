@@ -19,18 +19,48 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         foreground: "hsl(var(--foreground))",
-        // New color theme
-        primary: "#8338ec", // Purple
-        secondary: "#3a86ff", // Blue
-        accent: "#ffbe0b", // Yellow
-        highlight: "#fb5607", // Orange
-        bright: "#ff006e", // Pink
+        // Two-color theme: dark navy + white
+        primary: {
+          DEFAULT: "#0F172A",
+          foreground: "#FFFFFF",
+        },
+        secondary: {
+          DEFAULT: "#FFFFFF",
+          foreground: "#0F172A",
+        },
+        accent: {
+          DEFAULT: "#0F172A",
+          foreground: "#FFFFFF",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        highlight: "#0F172A",
+        bright: "#0F172A",
         background: "#FFFFFF",
-        "text-primary": "#1a1a1a",
-        "text-secondary": "#4a4a4a",
+        "text-primary": "#0F172A",
+        "text-secondary": "#0F172A",
       },
       keyframes: {
         "fade-up": {
@@ -300,5 +330,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: ("tailwindcss-animate"),
 } satisfies Config;
