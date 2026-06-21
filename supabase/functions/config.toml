@@ -1,10 +1,1 @@
 project_id = "rgfpyoihpevqmwtwlrvn"
-
-[functions.contact-webhook]
-verify_jwt = false
-
-[functions.extractor]
-verify_jwt = false
-
-[functions.comparagent]
-verify_jwt = false
