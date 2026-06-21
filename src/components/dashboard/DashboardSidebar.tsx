@@ -49,7 +49,7 @@ const DashboardSidebar = () => {
         <div className="px-3 py-2 space-y-1">
           {[
             { path: "/dashboard", label: "Dashboard", icon: LayoutGrid, exact: true },
-            { path: "/dashboard/browse-jobs", label: "Browse jobs", icon: Search },
+            { path: "/dashboard/browse-bursaries", label: "Browse bursaries", icon: Search },
             { path: "/dashboard/inbox", label: "Inbox", icon: Mail },
             { path: "/dashboard/tracker", label: "Tracker", icon: ClipboardList },
           ].map((item) => {
