@@ -45,7 +45,7 @@ const Dashboard = () => {
               <Route path="profile" element={<Profile />} />
               <Route path="tracker" element={<Tracker />} />
               <Route path="inbox" element={<Inbox />} />
-              <Route path="browse-jobs" element={<div />} />
+              <Route path="browse-bursaries" element={<div />} />
               <Route path="settings" element={<Settings />} />
               <Route index element={<div />} />
             </Routes>
