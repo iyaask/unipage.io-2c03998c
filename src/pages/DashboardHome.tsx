@@ -86,7 +86,7 @@ const DashboardHome = () => {
     if (error) {
       toast({ title: "Dashboard error", description: error.message, variant: "destructive" });
     } else {
-      setApplications((data || []) as Application[]);
+      setApplications((data || []) as unknown as Application[]);
       setMatches([]);
     }
 

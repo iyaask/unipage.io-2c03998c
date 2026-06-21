@@ -1,33 +1,8 @@
-
-import { Button } from "@/components/ui/button";
-import { LogOut, User, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
-import { Separator } from "@/components/ui/separator";
 
 const Settings = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      toast({
-        title: "Logged out",
-        description: "You have been successfully logged out."
-      });
-      navigate("/");
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to log out",
-        variant: "destructive"
-      });
-    }
-  };
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -46,24 +21,10 @@ const Settings = () => {
             </div>
           </div>
         </div>
-
-        <Separator />
-
-        <div className="px-6 py-5">
-          <h2 className="text-sm font-semibold text-foreground mb-4">Actions</h2>
-          <Button
-            onClick={handleLogout}
-            variant="destructive"
-            size="sm"
-            className="flex items-center gap-2"
-          >
-            <LogOut className="h-4 w-4" />
-            Log out
-          </Button>
-        </div>
       </div>
     </div>
   );
 };
 
 export default Settings;
+
