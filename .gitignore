@@ -16,6 +16,9 @@ node_modules
 dist
 dist-ssr
 *.local
+__pycache__/
+*.py[cod]
+agent/artifacts/
 
 # Editor directories and files
 .vscode/*

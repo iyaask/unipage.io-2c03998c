@@ -57,7 +57,7 @@ const Dashboard = () => {
               <Route path="settings" element={<Settings />} />
               <Route path="papa-ai" element={<PapaAI />} />
               <Route path="whatsapp" element={<WhatsAppConnect />} />
-              <Route index element={<Profile />} />
+              <Route index element={<DashboardHome />} />
             </Routes>
           </div>
         </main>

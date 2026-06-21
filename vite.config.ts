@@ -19,6 +19,12 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     strictPort: true,
     host: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:8787",
+        changeOrigin: true,
+      },
+    },
     hmr: {
       overlay: true,
       clientPort: 8080
