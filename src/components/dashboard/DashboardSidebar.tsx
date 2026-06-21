@@ -1,4 +1,4 @@
-import { Home, Settings, LogOut, User, ClipboardList, LayoutGrid, Search, Mail } from "lucide-react";
+import { Home, Settings, LogOut, User, ClipboardList, LayoutGrid, Search, Mail, MessageCircle, Check } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -8,11 +8,24 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const DashboardSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+  const [whatsappOpen, setWhatsappOpen] = useState(false);
+  const whatsappNumber = "+1 (206) 796-7516";
+  const waLink = `https://wa.me/12067967516?text=${encodeURIComponent("Hi, I'd like to apply for bursaries over WhatsApp.")}`;
 
   const handleLogout = async () => {
     try {
@@ -72,7 +85,54 @@ const DashboardSidebar = () => {
               </button>
             );
           })}
+          <button
+            onClick={() => setWhatsappOpen(true)}
+            className="flex items-center gap-2.5 w-full text-left text-[13px] rounded-md p-2 transition-colors text-muted-foreground hover:text-foreground hover:bg-muted"
+          >
+            <MessageCircle className="w-4 h-4 shrink-0" />
+            <span>WhatsApp</span>
+          </button>
         </div>
+
+        <Dialog open={whatsappOpen} onOpenChange={setWhatsappOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <DialogTitle className="text-xl">Apply over WhatsApp</DialogTitle>
+              </div>
+              <DialogDescription className="pt-2">
+                Same flow as iMessage, on WhatsApp.
+              </DialogDescription>
+            </DialogHeader>
+            <ul className="space-y-2.5 py-2">
+              {[
+                "Daily matches delivered to your chat",
+                "Reply yes to apply",
+                "Works on any device with WhatsApp installed",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-2 text-sm">
+                  <Check className="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center justify-between rounded-md bg-muted px-4 py-3 text-sm">
+              <span className="text-muted-foreground">Contact</span>
+              <span className="font-medium">{whatsappNumber}</span>
+            </div>
+            <DialogFooter className="gap-2 sm:gap-2">
+              <Button variant="outline" onClick={() => setWhatsappOpen(false)} className="flex-1">
+                Close
+              </Button>
+              <Button asChild className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
+                <a href={waLink} target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
         <div className="mt-auto">
           <Separator />
