@@ -1,9 +1,9 @@
-// Connected to user's external Supabase project.
+// Connected to Lovable Cloud Supabase project.
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://rgfpyoihpevqmwtwlrvn.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_DNPyAujAfSLsIzSda5ITJQ_V9nGwDXz";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
