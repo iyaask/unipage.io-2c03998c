@@ -185,9 +185,7 @@ const Auth = () => {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome back!</h1>
-            <p className="text-gray-600">
-              Simplify your academic journey and boost your success with our AI-powered platform. Get started for free.
-            </p>
+            <p className="text-gray-600">Sign in to continue.</p>
           </div>
 
           <Tabs defaultValue="login" className="w-full">
@@ -313,20 +311,6 @@ const Auth = () => {
         </div>
       </div>
 
-      {/* Right side - Illustration */}
-      <div className="hidden lg:flex flex-1 bg-green-50 items-center justify-center p-12">
-        <div className="text-center max-w-md">
-          <div className="mb-8">
-            <div className="w-80 h-80 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-              <div className="text-6xl">🎓</div>
-            </div>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Find Your Perfect Course Match</h2>
-          <p className="text-gray-600">
-            Our AI analyzes your grades and preferences to recommend the best courses and bursaries for your academic journey.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
