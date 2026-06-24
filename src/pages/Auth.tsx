@@ -185,9 +185,7 @@ const Auth = () => {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome back!</h1>
-            <p className="text-gray-600">
-              Simplify your academic journey and boost your success with our AI-powered platform. Get started for free.
-            </p>
+            <p className="text-gray-600">Sign in to continue.</p>
           </div>
 
           <Tabs defaultValue="login" className="w-full">
