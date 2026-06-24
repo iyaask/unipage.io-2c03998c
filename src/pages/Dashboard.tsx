@@ -6,6 +6,7 @@ import Settings from "./Settings";
 import Profile from "./Profile";
 import Tracker from "./Tracker";
 import Inbox from "./Inbox";
+import BursariesLive from "./BursariesLive";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
@@ -45,9 +46,9 @@ const Dashboard = () => {
               <Route path="profile" element={<Profile />} />
               <Route path="tracker" element={<Tracker />} />
               <Route path="inbox" element={<Inbox />} />
-              <Route path="browse-bursaries" element={<div />} />
+              <Route path="browse-bursaries" element={<BursariesLive />} />
               <Route path="settings" element={<Settings />} />
-              <Route index element={<div />} />
+              <Route index element={<BursariesLive />} />
             </Routes>
           </div>
         </main>
