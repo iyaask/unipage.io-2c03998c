@@ -6,6 +6,7 @@ import Settings from "./Settings";
 import Profile from "./Profile";
 import Tracker from "./Tracker";
 import Inbox from "./Inbox";
+import BursariesLive from "./BursariesLive";
 import { useAuth } from "@/components/auth/AuthProvider";
 
 const Dashboard = () => {
